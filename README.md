@@ -69,7 +69,7 @@ Implementasi ini menggunakan modul standar Python untuk socket dan komunikasi ja
 
 Jalankan seluruh perintah dari folder root `kuiskilat/`.
 
-### Langkah 1 — Jalankan Server TCP
+### Langkah 1: Jalankan Server TCP
 
 Buka terminal pertama, kemudian jalankan:
 
@@ -79,7 +79,7 @@ python -m server.main
 
 Server akan dijalankan sebagai pusat komunikasi bagi client. Biarkan terminal server tetap terbuka selama permainan berlangsung.
 
-### Langkah 2 — Jalankan Client Pemain
+### Langkah 2: Jalankan Client Pemain
 
 Buka terminal kedua untuk pemain pertama:
 
@@ -91,7 +91,7 @@ Jalankan perintah yang sama pada terminal lain untuk menambahkan pemain. Setiap 
 
 Jika aplikasi menyediakan argumen CLI untuk nama pemain, argumen tersebut dapat digunakan sesuai bantuan atau implementasi pada `client/main.py`. Jika tidak, ikuti instruksi yang ditampilkan oleh aplikasi setelah client dijalankan.
 
-### Langkah 3 — Bermain
+### Langkah 3: Bermain
 
 1. Pastikan server aktif terlebih dahulu.
 2. Jalankan client pada terminal masing-masing pemain.

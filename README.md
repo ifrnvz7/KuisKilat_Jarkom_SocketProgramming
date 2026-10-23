@@ -4,7 +4,7 @@ Proyek Kelompok Mata Kuliah **Jaringan Komputer (PACS262202)**
 
 Rujukan materi: *Kurose & Ross, Computer Networking: A Top-Down Approach, 8th Edition*, khususnya Bab 2 §2.7 tentang *Socket Programming with TCP*.
 
-> **Catatan versi:** Arsip ini merupakan versi **socket-only** dari KuisKilat. Versi ini berfokus pada komunikasi antara client dan server menggunakan TCP socket melalui terminal (CLI). Fitur Frontend/Web UI, WebSocket Gateway, dan SQLite yang terdapat atau direncanakan pada versi full-stack tidak termasuk dalam versi arsip ini.
+> **Catatan versi:** Arsip ini merupakan versi **socket-only** dari KuisKilat. Versi ini berfokus pada komunikasi antara client dan server menggunakan TCP socket melalui terminal (CLI). Fitur Frontend/Web UI, WebSocket Gateway, dan SQLite yang terdapat pada versi full-stack tidak termasuk dalam versi arsip ini.
 
 ## Anggota Kelompok
 
@@ -34,8 +34,6 @@ KuisKilat adalah permainan kuis multipemain berbasis client-server. Pada versi s
 - **Game logic:** mengelola alur kuis, status permainan, pertanyaan, dan skor.
 - **Client CLI:** menyediakan antarmuka berbasis terminal untuk pemain.
 
-Versi ini tidak menjalankan HTTP server, WebSocket gateway, Web UI di browser, ataupun database SQLite. Bank soal ditangani melalui modul `server/questions.py`.
-
 ## 2. Struktur Direktori
 
 ```text
@@ -62,9 +60,8 @@ kuiskilat/
 
 ## 3. Persiapan
 
-1. Ekstrak arsip proyek.
-2. Pastikan Python 3 sudah terpasang.
-3. Buka terminal pada folder root `kuiskilat/`, yaitu folder yang berisi direktori `client/`, `common/`, dan `server/`.
+1. Pastikan Python 3 sudah terpasang.
+2. Buka terminal pada folder root `kuiskilat/`, yaitu folder yang berisi direktori `client/`, `common/`, dan `server/`.
 
 Implementasi ini menggunakan modul standar Python untuk socket dan komunikasi jaringan. Tidak diperlukan instalasi paket eksternal berdasarkan struktur proyek ini.
 
@@ -101,33 +98,3 @@ Jika aplikasi menyediakan argumen CLI untuk nama pemain, argumen tersebut dapat 
 3. Ikuti petunjuk pada terminal untuk bergabung dan berinteraksi dengan kuis.
 4. Biarkan semua client tetap terhubung selama permainan berlangsung.
 5. Untuk menghentikan permainan, ikuti mekanisme keluar yang disediakan aplikasi dan hentikan proses server setelah seluruh client selesai.
-
-**Penting:** versi ini menggunakan antarmuka terminal (CLI), bukan browser. Perintah untuk menjalankan `gateway.gateway` atau membuka `http://localhost:8080` tidak berlaku pada versi socket-only ini.
-
-## 5. Pengujian dan Pemeriksaan
-
-Sebelum menjalankan permainan, pemeriksaan sintaks seluruh file Python dapat dilakukan dari folder root:
-
-```bash
-python -m compileall .
-```
-
-Jika kompilasi berhasil, Python tidak menemukan kesalahan sintaks pada file yang diperiksa. Pemeriksaan ini **tidak menjamin** bahwa seluruh alur permainan atau komunikasi jaringan sudah berjalan benar; pengujian runtime tetap diperlukan.
-
-Pengujian manual yang disarankan:
-
-1. Jalankan server, lalu hubungkan satu client.
-2. Hubungkan beberapa client dari terminal terpisah.
-3. Periksa apakah pesan dari server diterima dengan benar oleh client.
-4. Uji alur permainan dari awal hingga selesai, termasuk pengiriman jawaban dan pembaruan skor jika tersedia.
-5. Uji penutupan salah satu client dan amati apakah server tetap dapat menangani client lainnya.
-
-## 6. Catatan Protokol dan Batasan Versi
-
-- Komunikasi utama dilakukan menggunakan **TCP**, yang menyediakan aliran byte andal dan berurutan.
-- TCP tidak mempertahankan batas pesan aplikasi secara otomatis. Karena itu, aplikasi memerlukan aturan framing/protokol agar data yang diterima dapat dipisahkan menjadi pesan-pesan yang benar.
-- Modul `common/protocol.py` menjadi tempat bersama untuk aturan protokol yang digunakan oleh client dan server.
-- Versi ini berfokus pada komunikasi socket TCP dan permainan melalui CLI.
-- **Tidak termasuk dalam arsip socket-only ini:** Web UI, HTTP server, WebSocket gateway, integrasi browser dan CLI dalam lobby yang sama melalui gateway, serta database SQLite.
-
-Untuk laporan yang membahas versi full-stack, jelaskan bahwa arsip ini merupakan implementasi socket-only yang menjadi bagian komunikasi TCP inti. Fitur gateway, web, dan database harus dijelaskan berdasarkan source code versi full-stack yang benar-benar digunakan dalam laporan, bukan dianggap tersedia pada arsip ini.
